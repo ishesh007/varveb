@@ -1,0 +1,2031 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aklavya's Trends - Premium Fashion</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            position: relative;
+        }
+        
+        .font-display {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Background Graphics */
+        .bg-graphics {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.05;
+            pointer-events: none;
+        }
+
+        .floating-shape {
+            position: absolute;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            animation: floatShape 20s infinite linear;
+        }
+
+        .floating-shape:nth-child(1) {
+            width: 100px;
+            height: 100px;
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-shape:nth-child(2) {
+            width: 150px;
+            height: 150px;
+            top: 60%;
+            right: 10%;
+            animation-delay: -5s;
+        }
+
+        .floating-shape:nth-child(3) {
+            width: 80px;
+            height: 80px;
+            bottom: 20%;
+            left: 20%;
+            animation-delay: -10s;
+        }
+
+        .floating-shape:nth-child(4) {
+            width: 120px;
+            height: 120px;
+            top: 30%;
+            right: 30%;
+            animation-delay: -15s;
+        }
+
+        @keyframes floatShape {
+            0% { transform: translateY(0px) rotate(0deg); }
+            25% { transform: translateY(-20px) rotate(90deg); }
+            50% { transform: translateY(0px) rotate(180deg); }
+            75% { transform: translateY(20px) rotate(270deg); }
+            100% { transform: translateY(0px) rotate(360deg); }
+        }
+
+        /* Particle Animation */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: particleFloat 15s infinite linear;
+        }
+
+        @keyframes particleFloat {
+            0% { transform: translateY(100vh) translateX(0px); opacity: 0; }
+            10% { opacity: 0.3; }
+            90% { opacity: 0.3; }
+            100% { transform: translateY(-100px) translateX(100px); opacity: 0; }
+        }
+        
+        /* Dark theme styles */
+        .dark {
+            background-color: #1a1a1a;
+            color: #ffffff;
+        }
+        
+        .dark .bg-white {
+            background-color: #2d2d2d !important;
+            color: #ffffff;
+        }
+        
+        .dark .bg-gray-50 {
+            background-color: #1a1a1a !important;
+        }
+        
+        .dark .bg-gray-100 {
+            background-color: #3d3d3d !important;
+        }
+        
+        .dark .text-gray-600 {
+            color: #a0a0a0 !important;
+        }
+        
+        .dark .text-gray-900 {
+            color: #ffffff !important;
+        }
+        
+        .dark .border-gray-300 {
+            border-color: #4d4d4d !important;
+        }
+        
+        .dark .shadow-lg {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.1) !important;
+        }
+
+        /* Discount Banner Animations */
+        .discount-banner {
+            background: linear-gradient(45deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3);
+            background-size: 400% 400%;
+            animation: gradientShift 3s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .pulse-glow {
+            animation: pulseGlow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes pulseGlow {
+            from { box-shadow: 0 0 20px rgba(255, 107, 107, 0.5); }
+            to { box-shadow: 0 0 40px rgba(255, 107, 107, 0.8); }
+        }
+
+        /* Sliding Banner */
+        .sliding-banner {
+            animation: slideText 20s linear infinite;
+            white-space: nowrap;
+        }
+
+        @keyframes slideText {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 53%, 80%, 100% { transform: translateY(0); }
+            40%, 43% { transform: translateY(-30px); }
+            70% { transform: translateY(-15px); }
+            90% { transform: translateY(-4px); }
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes scale {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        @keyframes shimmer {
+            0% { background-position: -200px 0; }
+            100% { background-position: calc(200px + 100%) 0; }
+        }
+        
+        .animate-fadeInUp {
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        .animate-slideInLeft {
+            animation: slideInLeft 0.8s ease-out;
+        }
+        
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .animate-bounce {
+            animation: bounce 2s infinite;
+        }
+
+        .animate-rotate {
+            animation: rotate 10s linear infinite;
+        }
+
+        .animate-scale {
+            animation: scale 2s ease-in-out infinite;
+        }
+        
+        .shimmer {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200px 100%;
+            animation: shimmer 1.5s infinite;
+        }
+        
+        /* Gradient backgrounds */
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        .dark ::-webkit-scrollbar-track {
+            background: #2d2d2d;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 4px;
+        }
+        
+        /* Hover effects */
+        .hover-scale {
+            transition: transform 0.3s ease;
+        }
+        
+        .hover-scale:hover {
+            transform: scale(1.05);
+        }
+        
+        .hover-glow:hover {
+            box-shadow: 0 0 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        /* Page transitions */
+        .page {
+            display: none;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+        
+        .page.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Theme toggle */
+        .theme-toggle {
+            position: relative;
+            width: 60px;
+            height: 30px;
+            background: #ddd;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        
+        .theme-toggle.dark {
+            background: #4a5568;
+        }
+        
+        .theme-toggle::before {
+            content: '';
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            width: 24px;
+            height: 24px;
+            background: white;
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .theme-toggle.dark::before {
+            transform: translateX(30px);
+            background: #2d3748;
+        }
+        
+        /* Navigation active state */
+        .nav-link.active {
+            color: #667eea !important;
+            font-weight: 600;
+        }
+        
+        /* Cart slide animation */
+        .cart-slide-enter {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+        
+        .cart-slide-enter-active {
+            transform: translateX(0);
+            opacity: 1;
+            transition: all 0.3s ease;
+        }
+        
+        /* Modal animations */
+        .modal-backdrop {
+            backdrop-filter: blur(5px);
+        }
+        
+        /* Product card hover effects */
+        .product-card {
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .dark .product-card:hover {
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .product-card:hover::before {
+            left: 100%;
+        }
+        
+        /* Loading animation */
+        .loading-spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Notification styles */
+        .notification {
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .notification.show {
+            transform: translateX(0);
+        }
+        
+        /* Search suggestions */
+        .search-suggestions {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        .search-suggestions.show {
+            max-height: 300px;
+        }
+        
+        /* Form styles */
+        .form-input {
+            transition: all 0.3s ease;
+        }
+        
+        .form-input:focus {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+        }
+        
+        /* Contact form animations */
+        .contact-form {
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        /* About page animations */
+        .about-section {
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        .about-section:nth-child(even) {
+            animation-delay: 0.2s;
+        }
+
+        /* Login/Register form styles */
+        .auth-form {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        .dark .auth-form {
+            background: rgba(45, 45, 45, 0.95);
+        }
+
+        /* Profile dropdown */
+        .profile-dropdown {
+            transform: translateY(-10px);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .profile-dropdown.show {
+            transform: translateY(0);
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Discount badge */
+        .discount-badge {
+            background: linear-gradient(45deg, #ff6b6b, #feca57);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 transition-colors duration-300">
+    <!-- Background Graphics -->
+    <div class="bg-graphics">
+        <div class="floating-shape"></div>
+        <div class="floating-shape"></div>
+        <div class="floating-shape"></div>
+        <div class="floating-shape"></div>
+    </div>
+
+    <!-- Particles -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Discount Banner -->
+    <div class="discount-banner text-white py-2 overflow-hidden">
+        <div class="sliding-banner text-center font-bold">
+            🎉 MEGA SALE! Up to 70% OFF on All Items | Free Shipping on Orders Above ₹999 | Limited Time Offer! 🎉
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="bg-white dark:bg-gray-800 shadow-lg sticky top-0 z-50 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center animate-slideInLeft">
+                    <h1 class="text-2xl font-display font-bold gradient-text cursor-pointer" onclick="showPage('home')">Aklavya's Trends</h1>
+                </div>
+                
+                <!-- Navigation Links -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#" class="nav-link text-gray-700 dark:text-gray-300 hover:text-purple-600 transition-colors duration-300" onclick="showPage('home')">Home</a>
+                    <a href="#" class="nav-link text-gray-700 dark:text-gray-300 hover:text-purple-600 transition-colors duration-300" onclick="showPage('shop')">Shop</a>
+                    <a href="#" class="nav-link text-gray-700 dark:text-gray-300 hover:text-purple-600 transition-colors duration-300" onclick="showPage('about')">About</a>
+                    <a href="#" class="nav-link text-gray-700 dark:text-gray-300 hover:text-purple-600 transition-colors duration-300" onclick="showPage('contact')">Contact</a>
+                </div>
+                
+                <!-- Search Bar -->
+                <div class="flex-1 max-w-lg mx-8 relative">
+                    <div class="relative">
+                        <input type="text" id="searchInput" placeholder="Search for products..." 
+                               class="w-full px-4 py-2 pl-10 pr-4 border border-gray-300 dark:border-gray-600 rounded-full focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300 bg-white dark:bg-gray-700 text-gray-900 dark:text-white">
+                        <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
+                    </div>
+                    <div id="searchSuggestions" class="search-suggestions absolute top-full left-0 right-0 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-lg mt-1 shadow-lg z-50">
+                        <!-- Search suggestions will be populated here -->
+                    </div>
+                </div>
+                
+                <!-- Navigation Icons -->
+                <div class="flex items-center space-x-4">
+                    <!-- Theme Toggle -->
+                    <div class="theme-toggle" id="themeToggle" onclick="toggleTheme()">
+                        <i class="fas fa-sun absolute left-2 top-1.5 text-yellow-500 text-xs"></i>
+                        <i class="fas fa-moon absolute right-2 top-1.5 text-gray-400 text-xs"></i>
+                    </div>
+                    
+                    <button id="wishlistBtn" class="relative p-2 text-gray-600 dark:text-gray-300 hover:text-purple-600 transition-colors duration-300 hover-scale">
+                        <i class="fas fa-heart text-xl"></i>
+                        <span id="wishlistCount" class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
+                    </button>
+                    <button id="cartBtn" class="relative p-2 text-gray-600 dark:text-gray-300 hover:text-purple-600 transition-colors duration-300 hover-scale">
+                        <i class="fas fa-shopping-cart text-xl"></i>
+                        <span id="cartCount" class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
+                    </button>
+                    
+                    <!-- Profile Dropdown -->
+                    <div class="relative">
+                        <button id="profileBtn" class="p-2 text-gray-600 dark:text-gray-300 hover:text-purple-600 transition-colors duration-300 hover-scale">
+                            <i class="fas fa-user text-xl"></i>
+                        </button>
+                        <div id="profileDropdown" class="profile-dropdown absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-600">
+                            <div class="py-2">
+                                <a href="#" onclick="showPage('login')" class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                                    <i class="fas fa-sign-in-alt mr-2"></i>Login
+                                </a>
+                                <a href="#" onclick="showPage('register')" class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                                    <i class="fas fa-user-plus mr-2"></i>Register
+                                </a>
+                                <div class="border-t border-gray-200 dark:border-gray-600 my-2"></div>
+                                <a href="#" class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                                    <i class="fas fa-user-circle mr-2"></i>My Profile
+                                </a>
+                                <a href="#" class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                                    <i class="fas fa-box mr-2"></i>My Orders
+                                </a>
+                                <a href="#" class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                                    <i class="fas fa-sign-out-alt mr-2"></i>Logout
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Page -->
+    <div id="homePage" class="page active">
+        <!-- Hero Section -->
+        <section class="gradient-bg text-white py-20 relative overflow-hidden">
+            <div class="absolute inset-0 bg-black opacity-20"></div>
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="text-center animate-fadeInUp">
+                    <h2 class="text-5xl md:text-7xl font-display font-bold mb-6 animate-float">
+                        Fashion Forward
+                    </h2>
+                    <p class="text-xl md:text-2xl mb-8 opacity-90">
+                        Discover the latest trends in premium clothing
+                    </p>
+                    <button onclick="showPage('shop')" class="bg-white text-purple-600 px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-100 transition-all duration-300 hover-scale hover-glow">
+                        Shop Now
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Floating elements -->
+            <div class="absolute top-20 left-10 w-20 h-20 bg-white opacity-10 rounded-full animate-float"></div>
+            <div class="absolute bottom-20 right-10 w-32 h-32 bg-white opacity-10 rounded-full animate-float" style="animation-delay: 1s;"></div>
+            <div class="absolute top-1/2 left-1/4 w-16 h-16 bg-white opacity-10 rounded-full animate-float" style="animation-delay: 2s;"></div>
+        </section>
+
+        <!-- Special Offers Banner -->
+        <section class="py-8 bg-gradient-to-r from-red-500 via-pink-500 to-purple-500 text-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                    <div class="pulse-glow p-6 rounded-lg bg-white bg-opacity-20">
+                        <i class="fas fa-fire text-4xl mb-3 animate-bounce"></i>
+                        <h3 class="text-xl font-bold mb-2">Flash Sale</h3>
+                        <p>Up to 70% OFF on selected items</p>
+                    </div>
+                    <div class="pulse-glow p-6 rounded-lg bg-white bg-opacity-20" style="animation-delay: 0.5s;">
+                        <i class="fas fa-shipping-fast text-4xl mb-3 animate-bounce"></i>
+                        <h3 class="text-xl font-bold mb-2">Free Shipping</h3>
+                        <p>On orders above ₹999</p>
+                    </div>
+                    <div class="pulse-glow p-6 rounded-lg bg-white bg-opacity-20" style="animation-delay: 1s;">
+                        <i class="fas fa-gift text-4xl mb-3 animate-bounce"></i>
+                        <h3 class="text-xl font-bold mb-2">Special Gifts</h3>
+                        <p>Free gift with every purchase</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Categories -->
+        <section class="py-16 bg-white dark:bg-gray-800 transition-colors duration-300">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h3 class="text-4xl font-display font-bold text-center mb-12 gradient-text animate-fadeInUp">Shop by Category</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="category-card bg-gradient-to-br from-pink-400 to-purple-600 rounded-2xl p-8 text-white text-center hover-scale cursor-pointer animate-rotate" onclick="showPage('shop'); filterProducts('men');">
+                        <i class="fas fa-male text-6xl mb-4"></i>
+                        <h4 class="text-2xl font-bold">Men's Fashion</h4>
+                        <p class="mt-2 opacity-90">Trendy & Comfortable</p>
+                    </div>
+                    <div class="category-card bg-gradient-to-br from-blue-400 to-indigo-600 rounded-2xl p-8 text-white text-center hover-scale cursor-pointer animate-scale" onclick="showPage('shop'); filterProducts('women');">
+                        <i class="fas fa-female text-6xl mb-4"></i>
+                        <h4 class="text-2xl font-bold">Women's Fashion</h4>
+                        <p class="mt-2 opacity-90">Elegant & Stylish</p>
+                    </div>
+                    <div class="category-card bg-gradient-to-br from-green-400 to-teal-600 rounded-2xl p-8 text-white text-center hover-scale cursor-pointer animate-bounce" onclick="showPage('shop'); filterProducts('accessories');">
+                        <i class="fas fa-gem text-6xl mb-4"></i>
+                        <h4 class="text-2xl font-bold">Accessories</h4>
+                        <p class="mt-2 opacity-90">Complete Your Look</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Products Preview -->
+        <section class="py-16 bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h3 class="text-4xl font-display font-bold gradient-text mb-4">Featured Products</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-lg">Discover our most popular items</p>
+                </div>
+                <div id="featuredProducts" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Featured products will be populated here -->
+                </div>
+                <div class="text-center mt-12">
+                    <button onclick="showPage('shop')" class="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-8 py-3 rounded-full font-semibold hover:from-purple-700 hover:to-blue-700 transition-all duration-300 hover-scale">
+                        View All Products
+                    </button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Login Page -->
+    <div id="loginPage" class="page">
+        <section class="min-h-screen flex items-center justify-center py-16 bg-gradient-to-br from-purple-400 via-pink-500 to-red-500">
+            <div class="auth-form max-w-md w-full mx-4 p-8 rounded-2xl shadow-2xl animate-fadeInUp">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-display font-bold gradient-text mb-2">Welcome Back!</h2>
+                    <p class="text-gray-600 dark:text-gray-400">Sign in to your account</p>
+                </div>
+                
+                <form id="loginForm" class="space-y-6">
+                    <div>
+                        <label class="block text-sm font-medium mb-2 text-gray-700 dark:text-gray-300">Email Address</label>
+                        <input type="email" required class="form-input w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-all duration-300">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-2 text-gray-700 dark:text-gray-300">Password</label>
+                        <input type="password" required class="form-input w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-all duration-300">
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <label class="flex items-center">
+                            <input type="checkbox" class="rounded border-gray-300 text-purple-600 focus:ring-purple-500">
+                            <span class="ml-2 text-sm text-gray-600 dark:text-gray-400">Remember me</span>
+                        </label>
+                        <a href="#" class="text-sm text-purple-600 hover:text-purple-700">Forgot password?</a>
+                    </div>
+                    <button type="submit" class="w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white py-3 rounded-lg font-semibold hover:from-purple-700 hover:to-blue-700 transition-all duration-300 hover-scale">
+                        Sign In
+                    </button>
+                </form>
+                
+                <div class="mt-6 text-center">
+                    <p class="text-gray-600 dark:text-gray-400">Don't have an account? 
+                        <a href="#" onclick="showPage('register')" class="text-purple-600 hover:text-purple-700 font-semibold">Sign up</a>
+                    </p>
+                </div>
+                
+                <div class="mt-6">
+                    <div class="relative">
+                        <div class="absolute inset-0 flex items-center">
+                            <div class="w-full border-t border-gray-300 dark:border-gray-600"></div>
+                        </div>
+                        <div class="relative flex justify-center text-sm">
+                            <span class="px-2 bg-white dark:bg-gray-800 text-gray-500">Or continue with</span>
+                        </div>
+                    </div>
+                    <div class="mt-6 grid grid-cols-2 gap-3">
+                        <button class="w-full inline-flex justify-center py-2 px-4 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm bg-white dark:bg-gray-700 text-sm font-medium text-gray-500 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors">
+                            <i class="fab fa-google text-red-500"></i>
+                            <span class="ml-2">Google</span>
+                        </button>
+                        <button class="w-full inline-flex justify-center py-2 px-4 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm bg-white dark:bg-gray-700 text-sm font-medium text-gray-500 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors">
+                            <i class="fab fa-facebook text-blue-500"></i>
+                            <span class="ml-2">Facebook</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Register Page -->
+    <div id="registerPage" class="page">
+        <section class="min-h-screen flex items-center justify-center py-16 bg-gradient-to-br from-blue-400 via-purple-500 to-pink-500">
+            <div class="auth-form max-w-md w-full mx-4 p-8 rounded-2xl shadow-2xl animate-fadeInUp">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-display font-bold gradient-text mb-2">Join Us Today!</h2>
+                    <p class="text-gray-600 dark:text-gray-400">Create your account</p>
+                </div>
+                
+                <form id="registerForm" class="space-y-6">
+                    <div>
+                        <label class="block text-sm font-medium mb-2 text-gray-700 dark:text-gray-300">Full Name</label>
+                        <input type="text" required class="form-input w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-all duration-300">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-2 text-gray-700 dark:text-gray-300">Email Address</label>
+                        <input type="email" required class="form-input w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-all duration-300">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-2 text-gray-700 dark:text-gray-300">Phone Number</label>
+                        <input type="tel" required class="form-input w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-all duration-300">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-2 text-gray-700 dark:text-gray-300">Password</label>
+                        <input type="password" required class="form-input w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-all duration-300">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-2 text-gray-700 dark:text-gray-300">Confirm Password</label>
+                        <input type="password" required class="form-input w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-all duration-300">
+                    </div>
+                    <div class="flex items-center">
+                        <input type="checkbox" required class="rounded border-gray-300 text-purple-600 focus:ring-purple-500">
+                        <span class="ml-2 text-sm text-gray-600 dark:text-gray-400">I agree to the <a href="#" class="text-purple-600 hover:text-purple-700">Terms and Conditions</a></span>
+                    </div>
+                    <button type="submit" class="w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white py-3 rounded-lg font-semibold hover:from-purple-700 hover:to-blue-700 transition-all duration-300 hover-scale">
+                        Create Account
+                    </button>
+                </form>
+                
+                <div class="mt-6 text-center">
+                    <p class="text-gray-600 dark:text-gray-400">Already have an account? 
+                        <a href="#" onclick="showPage('login')" class="text-purple-600 hover:text-purple-700 font-semibold">Sign in</a>
+                    </p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Shop Page -->
+    <div id="shopPage" class="page">
+        <section class="py-16 bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center mb-12">
+                    <h3 class="text-4xl font-display font-bold gradient-text">All Products</h3>
+                    <div class="flex space-x-4">
+                        <button onclick="filterProducts('all')" class="filter-btn px-6 py-2 rounded-full border-2 border-purple-600 text-purple-600 hover:bg-purple-600 hover:text-white transition-all duration-300">All</button>
+                        <button onclick="filterProducts('men')" class="filter-btn px-6 py-2 rounded-full border-2 border-purple-600 text-purple-600 hover:bg-purple-600 hover:text-white transition-all duration-300">Men</button>
+                        <button onclick="filterProducts('women')" class="filter-btn px-6 py-2 rounded-full border-2 border-purple-600 text-purple-600 hover:bg-purple-600 hover:text-white transition-all duration-300">Women</button>
+                        <button onclick="filterProducts('accessories')" class="filter-btn px-6 py-2 rounded-full border-2 border-purple-600 text-purple-600 hover:bg-purple-600 hover:text-white transition-all duration-300">Accessories</button>
+                    </div>
+                </div>
+                
+                <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Products will be populated here -->
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- About Page -->
+    <div id="aboutPage" class="page">
+        <section class="py-16 bg-white dark:bg-gray-800 transition-colors duration-300">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16 about-section">
+                    <h2 class="text-5xl font-display font-bold gradient-text mb-6">About Aklavya's Trends</h2>
+                    <p class="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+                        We are passionate about bringing you the latest in fashion trends with premium quality and exceptional style.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-16 about-section">
+                    <div>
+                        <h3 class="text-3xl font-display font-bold mb-6 text-gray-900 dark:text-white">Our Story</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-6">
+                            Founded with a vision to make premium fashion accessible to everyone, Aklavya's Trends has been at the forefront of style innovation since our inception. We believe that fashion is not just about clothing—it's about expressing your unique personality and confidence.
+                        </p>
+                        <p class="text-gray-600 dark:text-gray-400">
+                            Our carefully curated collection features the latest trends from around the world, ensuring that you always stay ahead in the fashion game.
+                        </p>
+                    </div>
+                    <div class="bg-gradient-to-br from-purple-400 to-blue-500 rounded-2xl p-8 text-white text-center animate-float">
+                        <i class="fas fa-award text-6xl mb-4"></i>
+                        <h4 class="text-2xl font-bold mb-2">Premium Quality</h4>
+                        <p>Every piece is carefully selected for quality and style</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 about-section">
+                    <div class="text-center p-8 bg-gray-50 dark:bg-gray-700 rounded-2xl transition-colors duration-300 animate-bounce">
+                        <i class="fas fa-shipping-fast text-4xl text-purple-600 mb-4"></i>
+                        <h4 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Fast Shipping</h4>
+                        <p class="text-gray-600 dark:text-gray-400">Quick and reliable delivery to your doorstep</p>
+                    </div>
+                    <div class="text-center p-8 bg-gray-50 dark:bg-gray-700 rounded-2xl transition-colors duration-300 animate-scale">
+                        <i class="fas fa-undo text-4xl text-purple-600 mb-4"></i>
+                        <h4 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Easy Returns</h4>
+                        <p class="text-gray-600 dark:text-gray-400">30-day hassle-free return policy</p>
+                    </div>
+                    <div class="text-center p-8 bg-gray-50 dark:bg-gray-700 rounded-2xl transition-colors duration-300 animate-float">
+                        <i class="fas fa-headset text-4xl text-purple-600 mb-4"></i>
+                        <h4 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">24/7 Support</h4>
+                        <p class="text-gray-600 dark:text-gray-400">Always here to help with your questions</p>
+                    </div>
+                </div>
+
+                <div class="text-center about-section">
+                    <h3 class="text-3xl font-display font-bold mb-6 gradient-text">Join Our Fashion Journey</h3>
+                    <p class="text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto">
+                        Be part of a community that celebrates style, quality, and individuality. Follow us on social media for the latest updates and fashion inspiration.
+                    </p>
+                    <div class="flex justify-center space-x-6">
+                        <a href="#" class="text-purple-600 hover:text-purple-700 transition-colors hover-scale animate-bounce">
+                            <i class="fab fa-facebook text-3xl"></i>
+                        </a>
+                        <a href="#" class="text-purple-600 hover:text-purple-700 transition-colors hover-scale animate-scale">
+                            <i class="fab fa-instagram text-3xl"></i>
+                        </a>
+                        <a href="#" class="text-purple-600 hover:text-purple-700 transition-colors hover-scale animate-float">
+                            <i class="fab fa-twitter text-3xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Contact Page -->
+    <div id="contactPage" class="page">
+        <section class="py-16 bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-5xl font-display font-bold gradient-text mb-6">Get In Touch</h2>
+                    <p class="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+                        We'd love to hear from you. Send us a message and we'll respond as soon as possible.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                    <!-- Contact Form -->
+                    <div class="contact-form">
+                        <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg transition-colors duration-300">
+                            <h3 class="text-2xl font-bold mb-6 text-gray-900 dark:text-white">Send us a Message</h3>
+                            <form id="contactForm" class="space-y-6">
+                                <div>
+                                    <label class="block text-sm font-medium mb-2 text-gray-700 dark:text-gray-300">Full Name</label>
+                                    <input type="text" required class="form-input w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-all duration-300">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium mb-2 text-gray-700 dark:text-gray-300">Email Address</label>
+                                    <input type="email" required class="form-input w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-all duration-300">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium mb-2 text-gray-700 dark:text-gray-300">Subject</label>
+                                    <input type="text" required class="form-input w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-all duration-300">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium mb-2 text-gray-700 dark:text-gray-300">Message</label>
+                                    <textarea rows="5" required class="form-input w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-all duration-300 resize-none"></textarea>
+                                </div>
+                                <button type="submit" class="w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white py-3 rounded-lg font-semibold hover:from-purple-700 hover:to-blue-700 transition-all duration-300 hover-scale">
+                                    Send Message
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Contact Information -->
+                    <div class="space-y-8">
+                        <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg transition-colors duration-300 animate-float">
+                            <h3 class="text-2xl font-bold mb-6 text-gray-900 dark:text-white">Contact Information</h3>
+                            <div class="space-y-6">
+                                <div class="flex items-center space-x-4">
+                                    <div class="w-12 h-12 bg-purple-100 dark:bg-purple-900 rounded-full flex items-center justify-center">
+                                        <i class="fas fa-map-marker-alt text-purple-600"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-900 dark:text-white">Address</h4>
+                                        <p class="text-gray-600 dark:text-gray-400">123 Fashion Street, Mumbai, Maharashtra 400001</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-4">
+                                    <div class="w-12 h-12 bg-purple-100 dark:bg-purple-900 rounded-full flex items-center justify-center">
+                                        <i class="fas fa-phone text-purple-600"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-900 dark:text-white">Phone</h4>
+                                        <p class="text-gray-600 dark:text-gray-400">+91 98765 43210</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-4">
+                                    <div class="w-12 h-12 bg-purple-100 dark:bg-purple-900 rounded-full flex items-center justify-center">
+                                        <i class="fas fa-envelope text-purple-600"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-900 dark:text-white">Email</h4>
+                                        <p class="text-gray-600 dark:text-gray-400">info@aklavyastrends.com</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg transition-colors duration-300 animate-scale">
+                            <h3 class="text-2xl font-bold mb-6 text-gray-900 dark:text-white">Business Hours</h3>
+                            <div class="space-y-3">
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600 dark:text-gray-400">Monday - Friday</span>
+                                    <span class="font-semibold text-gray-900 dark:text-white">9:00 AM - 8:00 PM</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600 dark:text-gray-400">Saturday</span>
+                                    <span class="font-semibold text-gray-900 dark:text-white">10:00 AM - 6:00 PM</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600 dark:text-gray-400">Sunday</span>
+                                    <span class="font-semibold text-gray-900 dark:text-white">12:00 PM - 5:00 PM</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Cart Sidebar -->
+    <div id="cartSidebar" class="fixed right-0 top-0 h-full w-96 bg-white dark:bg-gray-800 shadow-2xl transform translate-x-full transition-all duration-300 z-50">
+        <div class="p-6 border-b border-gray-200 dark:border-gray-600">
+            <div class="flex justify-between items-center">
+                <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Shopping Cart</h3>
+                <button id="closeCart" class="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+        </div>
+        <div id="cartItems" class="flex-1 overflow-y-auto p-6">
+            <!-- Cart items will be populated here -->
+        </div>
+        <div class="border-t border-gray-200 dark:border-gray-600 p-6">
+            <div class="flex justify-between items-center mb-4">
+                <span class="text-xl font-bold text-gray-900 dark:text-white">Total:</span>
+                <span id="cartTotal" class="text-2xl font-bold gradient-text">₹0.00</span>
+            </div>
+            <button onclick="proceedToCheckout()" class="w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white py-3 rounded-lg font-semibold hover:from-purple-700 hover:to-blue-700 transition-all duration-300 hover-scale">
+                Proceed to Checkout
+            </button>
+        </div>
+    </div>
+
+    <!-- Wishlist Modal -->
+    <div id="wishlistModal" class="fixed inset-0 bg-black bg-opacity-50 modal-backdrop hidden items-center justify-center z-50">
+        <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 max-w-4xl w-full mx-4 max-h-96 overflow-y-auto transition-colors duration-300">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-3xl font-bold gradient-text">My Wishlist</h3>
+                <button id="closeWishlist" class="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <div id="wishlistItems" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Wishlist items will be populated here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Quick View Modal -->
+    <div id="quickViewModal" class="fixed inset-0 bg-black bg-opacity-50 modal-backdrop hidden items-center justify-center z-50">
+        <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 max-w-4xl w-full mx-4 transition-colors duration-300">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-3xl font-bold gradient-text">Product Details</h3>
+                <button id="closeQuickView" class="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <div id="quickViewContent">
+                <!-- Quick view content will be populated here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div id="notification" class="notification fixed top-20 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50">
+        <span id="notificationText">Item added to cart!</span>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 dark:bg-black text-white py-16 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h4 class="text-2xl font-display font-bold mb-4 gradient-text">Aklavya's Trends</h4>
+                    <p class="text-gray-400">Your destination for premium fashion and style.</p>
+                </div>
+                <div>
+                    <h5 class="text-lg font-semibold mb-4">Quick Links</h5>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors" onclick="showPage('about')">About Us</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors" onclick="showPage('contact')">Contact</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Size Guide</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Returns</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="text-lg font-semibold mb-4">Categories</h5>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors" onclick="showPage('shop'); filterProducts('men');">Men's Fashion</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors" onclick="showPage('shop'); filterProducts('women');">Women's Fashion</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors" onclick="showPage('shop'); filterProducts('accessories');">Accessories</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors" onclick="showPage('shop')">New Arrivals</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="text-lg font-semibold mb-4">Follow Us</h5>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors hover-scale animate-bounce">
+                            <i class="fab fa-facebook text-2xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors hover-scale animate-scale">
+                            <i class="fab fa-instagram text-2xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors hover-scale animate-float">
+                            <i class="fab fa-twitter text-2xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 Aklavya's Trends. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Global state
+        let products = [
+            // Men's Fashion
+            {
+                id: 1,
+                name: "Premium Cotton T-Shirt",
+                price: 899,
+                originalPrice: 1299,
+                category: "men",
+                image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 300 300'%3E%3Crect width='300' height='300' fill='%23667eea'/%3E%3Ctext x='150' y='150' font-family='Arial' font-size='20' fill='white' text-anchor='middle' dy='7'%3ET-Shirt%3C/text%3E%3C/svg%3E",
+                description: "Comfortable premium cotton t-shirt perfect for everyday wear.",
+                discount: 31
+            },
+            {
+                id: 2,
+                name: "Classic Denim Jeans",
+                price: 2499,
+                originalPrice: 3999,
+                category: "men",
+                image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 300 300'%3E%3Crect width='300' height='300' fill='%23434190'/%3E%3Ctext x='150' y='150' font-family='Arial' font-size='20' fill='white' text-anchor='middle' dy='7'%3EJeans%3C/text%3E%3C/svg%3E",
+                description: "High-quality denim jeans with a perfect fit.",
+                discount: 38
+            },
+            {
+                id: 3,
+                name: "Formal Shirt",
+                price: 1799,
+                originalPrice: 2499,
+                category: "men",
+                image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 300 300'%3E%3Crect width='300' height='300' fill='%2300f2fe'/%3E%3Ctext x='150' y='150' font-family='Arial' font-size='20' fill='white' text-anchor='middle' dy='7'%3EShirt%3C/text%3E%3C/svg%3E",
+                description: "Professional formal shirt for business occasions.",
+                discount: 28
+            },
+            {
+                id: 4,
+                name: "Casual Hoodie",
+                price: 1999,
+                originalPrice: 2999,
+                category: "men",
+                image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 300 300'%3E%3Crect width='300' height='300' fill='%23ff6b6b'/%3E%3Ctext x='150' y='150' font-family='Arial' font-size='18' fill='white' text-anchor='middle' dy='7'%3EHoodie%3C/text%3E%3C/svg%3E",
+                description: "Comfortable hoodie for casual outings.",
+                discount: 33
+            },
+            {
+                id: 5,
+                name: "Sports Track Pants",
+                price: 1299,
+                originalPrice: 1899,
+                category: "men",
+                image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 300 300'%3E%3Crect width='300' height='300' fill='%2348dbfb'/%3E%3Ctext x='150' y='140' font-family='Arial' font-size='16' fill='white' text-anchor='middle' dy='7'%3ETrack%3C/text%3E%3Ctext x='150' y='160' font-family='Arial' font-size='16' fill='white' text-anchor='middle' dy='7'%3EPants%3C/text%3E%3C/svg%3E",
+                description: "Comfortable track pants for sports and leisure.",
+                discount: 32
+            },
+            {
+                id: 6,
+                name: "Leather Jacket",
+                price: 4999,
+                originalPrice: 7999,
+                category: "men",
+                image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 300 300'%3E%3Crect width='300' height='300' fill='%23333333'/%3E%3Ctext x='150' y='140' font-family='Arial' font-size='16' fill='white' text-anchor='middle' dy='7'%3ELeather%3C/text%3E%3Ctext x='150' y='160' font-family='Arial' font-size='16' fill='white' text-anchor='middle' dy='7'%3EJacket%3C/text%3E%3C/svg%3E",
+                description: "Premium leather jacket for a stylish look.",
+                discount: 38
+            },
+
+            // Women's Fashion
+            {
+                id: 7,
+                name: "Elegant Summer Dress",
+                price: 2299,
+                originalPrice: 3499,
+                category: "women",
+                image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 300 300'%3E%3Crect width='300' height='300' fill='%23764ba2'/%3E%3Ctext x='150' y='150' font-family='Arial' font-size='20' fill='white' text-anchor='middle' dy='7'%3EDress%3C/text%3E%3C/svg%3E",
+                description: "Beautiful summer dress that combines comfort with style.",
+                discount: 34
+            },
+            {
+                id: 8,
+                name: "Casual Blazer",
+                price: 3499,
+                originalPrice: 4999,
+                category: "women",
+                image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 300 300'%3E%3Crect width='300' height='300' fill='%23f5576c'/%3E%3Ctext x='150' y='150' font-family='Arial' font-size='20' fill='white' text-anchor='middle' dy='7'%3EBlazer%3C/text%3E%3C/svg%3E",
+                description: "Versatile blazer perfect for both casual and formal occasions.",
+                discount: 30
+            },
+            {
+                id: 9,
+                name: "Floral Print Top",
+                price: 1199,
+                originalPrice: 1799,
+                category: "women",
+                image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 300 300'%3E%3Crect width='300' height='300' fill='%23ff9ff3'/%3E%3Ctext x='150' y='150' font-family='Arial' font-size='18' fill='white' text-anchor='middle' dy='7'%3EFloral Top%3C/text%3E%3C/svg%3E",
+                description: "Beautiful floral print top for a feminine look.",
+                discount: 33
+            },
+            {
+                id: 10,
+                name: "High-Waist Jeans",
+                price: 2199,
+                originalPrice: 2999,
+                category: "women",
+                image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 300 300'%3E%3Crect width='300' height='300' fill='%236c5ce7'/%3E%3Ctext x='150' y='140' font-family='Arial' font-size='16' fill='white' text-anchor='middle' dy='7'%3EHigh-Waist%3C/text%3E%3Ctext x='150' y='160' font-family='Arial' font-size='16' fill='white' text-anchor='middle' dy='7'%3EJeans%3C/text%3E%3C/svg%3E",
+                description: "Trendy high-waist jeans for a modern silhouette.",
+                discount: 27
+            },
+            {
+                id: 11,
+                name: "Silk Blouse",
+                price: 2799,
+                originalPrice: 3999,
+                category: "women",
+                image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 300 300'%3E%3Crect width='300' height='300' fill='%23a29bfe'/%3E%3Ctext x='150' y='150' font-family='Arial' font-size='18' fill='white' text-anchor='middle' dy='7'%3ESilk Blouse%3C/text%3E%3C/svg%3E",
+                description: "Luxurious silk blouse for elegant occasions.",
+                discount: 30
+            },
+            {
+                id: 12,
+                name: "Maxi Skirt",
+                price: 1899,
+                originalPrice: 2699,
+                category: "women",
+                image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 300 300'%3E%3Crect width='300' height='300' fill='%23fd79a8'/%3E%3Ctext x='150' y='140' font-family='Arial' font-size='18' fill='white' text-anchor='middle' dy='7'%3EMaxi%3C/text%3E%3Ctext x='150' y='160' font-family='Arial' font-size='18' fill='white' text-anchor='middle' dy='7'%3ESkirt%3C/text%3E%3C/svg%3E",
+                description: "Flowing maxi skirt for a bohemian style.",
+                discount: 30
+            },
+
+            // Accessories
+            {
+                id: 13,
+                name: "Designer Handbag",
+                price: 4999,
+                originalPrice: 7999,
+                category: "accessories",
+                image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 300 300'%3E%3Crect width='300' height='300' fill='%23f093fb'/%3E%3Ctext x='150' y='150' font-family='Arial' font-size='18' fill='white' text-anchor='middle' dy='7'%3EHandbag%3C/text%3E%3C/svg%3E",
+                description: "Luxurious designer handbag for the modern woman.",
+                discount: 38
+            },
+            {
+                id: 14,
+                name: "Sports Sneakers",
+                price: 2999,
+                originalPrice: 4499,
+                category: "accessories",
+                image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 300 300'%3E%3Crect width='300' height='300' fill='%234facfe'/%3E%3Ctext x='150' y='150' font-family='Arial' font-size='18' fill='white' text-anchor='middle' dy='7'%3ESneakers%3C/text%3E%3C/svg%3E",
+                description: "Comfortable sports sneakers for active lifestyle.",
+                discount: 33
+            },
+            {
+                id: 15,
+                name: "Silk Scarf",
+                price: 1199,
+                originalPrice: 1799,
+                category: "accessories",
+                image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 300 300'%3E%3Crect width='300' height='300' fill='%23fa709a'/%3E%3Ctext x='150' y='150' font-family='Arial' font-size='20' fill='white' text-anchor='middle' dy='7'%3EScarf%3C/text%3E%3C/svg%3E",
+                description: "Elegant silk scarf to complement any outfit.",
+                discount: 33
+            },
+            {
+                id: 16,
+                name: "Leather Belt",
+                price: 899,
+                originalPrice: 1299,
+                category: "accessories",
+                image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 300 300'%3E%3Crect width='300' height='300' fill='%23636e72'/%3E%3Ctext x='150' y='150' font-family='Arial' font-size='18' fill='white' text-anchor='middle' dy='7'%3ELeather Belt%3C/text%3E%3C/svg%3E",
+                description: "Premium leather belt for a polished look.",
+                discount: 31
+            },
+            {
+                id: 17,
+                name: "Sunglasses",
+                price: 1599,
+                originalPrice: 2299,
+                category: "accessories",
+                image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 300 300'%3E%3Crect width='300' height='300' fill='%23fdcb6e'/%3E%3Ctext x='150' y='150' font-family='Arial' font-size='16' fill='white' text-anchor='middle' dy='7'%3ESunglasses%3C/text%3E%3C/svg%3E",
+                description: "Stylish sunglasses with UV protection.",
+                discount: 30
+            },
+            {
+                id: 18,
+                name: "Wrist Watch",
+                price: 3999,
+                originalPrice: 5999,
+                category: "accessories",
+                image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 300 300'%3E%3Crect width='300' height='300' fill='%23e17055'/%3E%3Ctext x='150' y='140' font-family='Arial' font-size='16' fill='white' text-anchor='middle' dy='7'%3EWrist%3C/text%3E%3Ctext x='150' y='160' font-family='Arial' font-size='16' fill='white' text-anchor='middle' dy='7'%3EWatch%3C/text%3E%3C/svg%3E",
+                description: "Elegant wrist watch for timeless style.",
+                discount: 33
+            },
+            {
+                id: 19,
+                name: "Backpack",
+                price: 2199,
+                originalPrice: 2999,
+                category: "accessories",
+                image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 300 300'%3E%3Crect width='300' height='300' fill='%2300b894'/%3E%3Ctext x='150' y='150' font-family='Arial' font-size='18' fill='white' text-anchor='middle' dy='7'%3EBackpack%3C/text%3E%3C/svg%3E",
+                description: "Durable backpack for daily use and travel.",
+                discount: 27
+            },
+            {
+                id: 20,
+                name: "Jewelry Set",
+                price: 2799,
+                originalPrice: 3999,
+                category: "accessories",
+                image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 300 300'%3E%3Crect width='300' height='300' fill='%23ffeaa7'/%3E%3Ctext x='150' y='140' font-family='Arial' font-size='16' fill='%23333' text-anchor='middle' dy='7'%3EJewelry%3C/text%3E%3Ctext x='150' y='160' font-family='Arial' font-size='16' fill='%23333' text-anchor='middle' dy='7'%3ESet%3C/text%3E%3C/svg%3E",
+                description: "Beautiful jewelry set for special occasions.",
+                discount: 30
+            },
+
+            // Additional Men's Fashion
+            {
+                id: 21,
+                name: "Polo T-Shirt",
+                price: 1299,
+                originalPrice: 1899,
+                category: "men",
+                image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 300 300'%3E%3Crect width='300' height='300' fill='%2355a3ff'/%3E%3Ctext x='150' y='140' font-family='Arial' font-size='18' fill='white' text-anchor='middle' dy='7'%3EPolo%3C/text%3E%3Ctext x='150' y='160' font-family='Arial' font-size='18' fill='white' text-anchor='middle' dy='7'%3ET-Shirt%3C/text%3E%3C/svg%3E",
+                description: "Classic polo t-shirt for smart casual look.",
+                discount: 32
+            },
+            {
+                id: 22,
+                name: "Chinos Pants",
+                price: 1899,
+                originalPrice: 2699,
+                category: "men",
+                image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 300 300'%3E%3Crect width='300' height='300' fill='%23a55eea'/%3E%3Ctext x='150' y='150' font-family='Arial' font-size='18' fill='white' text-anchor='middle' dy='7'%3EChinos%3C/text%3E%3C/svg%3E",
+                description: "Comfortable chinos for versatile styling.",
+                discount: 30
+            },
+            {
+                id: 23,
+                name: "Bomber Jacket",
+                price: 3499,
+                originalPrice: 4999,
+                category: "men",
+                image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 300 300'%3E%3Crect width='300' height='300' fill='%23ff6348'/%3E%3Ctext x='150' y='140' font-family='Arial' font-size='16' fill='white' text-anchor='middle' dy='7'%3EBomber%3C/text%3E%3Ctext x='150' y='160' font-family='Arial' font-size='16' fill='white' text-anchor='middle' dy='7'%3EJacket%3C/text%3E%3C/svg%3E",
+                description: "Trendy bomber jacket for urban style.",
+                discount: 30
+            },
+            {
+                id: 24,
+                name: "Kurta Set",
+                price: 2299,
+                originalPrice: 3299,
+                category: "men",
+                image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 300 300'%3E%3Crect width='300' height='300' fill='%23ff9f43'/%3E%3Ctext x='150' y='140' font-family='Arial' font-size='18' fill='white' text-anchor='middle' dy='7'%3EKurta%3C/text%3E%3Ctext x='150' y='160' font-family='Arial' font-size='18' fill='white' text-anchor='middle' dy='7'%3ESet%3C/text%3E%3C/svg%3E",
+                description: "Traditional kurta set for festive occasions.",
+                discount: 30
+            },
+
+            // Additional Women's Fashion
+            {
+                id: 25,
+                name: "Saree Collection",
+                price: 3999,
+                originalPrice: 5999,
+                category: "women",
+                image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 300 300'%3E%3Crect width='300' height='300' fill='%23ff6b9d'/%3E%3Ctext x='150' y='150' font-family='Arial' font-size='20' fill='white' text-anchor='middle' dy='7'%3ESaree%3C/text%3E%3C/svg%3E",
+                description: "Elegant saree collection for special occasions.",
+                discount: 33
+            },
+            {
+                id: 26,
+                name: "Kurti Set",
+                price: 1799,
+                originalPrice: 2499,
+                category: "women",
+                image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 300 300'%3E%3Crect width='300' height='300' fill='%2326de81'/%3E%3Ctext x='150' y='140' font-family='Arial' font-size='18' fill='white' text-anchor='middle' dy='7'%3EKurti%3C/text%3E%3Ctext x='150' y='160' font-family='Arial' font-size='18' fill='white' text-anchor='middle' dy='7'%3ESet%3C/text%3E%3C/svg%3E",
+                description: "Comfortable kurti set for daily wear.",
+                discount: 28
+            },
+            {
+                id: 27,
+                name: "Lehenga Choli",
+                price: 5999,
+                originalPrice: 8999,
+                category: "women",
+                image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 300 300'%3E%3Crect width='300' height='300' fill='%23fd79a8'/%3E%3Ctext x='150' y='140' font-family='Arial' font-size='16' fill='white' text-anchor='middle' dy='7'%3ELehenga%3C/text%3E%3Ctext x='150' y='160' font-family='Arial' font-size='16' fill='white' text-anchor='middle' dy='7'%3ECholi%3C/text%3E%3C/svg%3E",
+                description: "Stunning lehenga choli for weddings.",
+                discount: 33
+            },
+            {
+                id: 28,
+                name: "Palazzo Set",
+                price: 1599,
+                originalPrice: 2299,
+                category: "women",
+                image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 300 300'%3E%3Crect width='300' height='300' fill='%2374b9ff'/%3E%3Ctext x='150' y='140' font-family='Arial' font-size='16' fill='white' text-anchor='middle' dy='7'%3EPalazzo%3C/text%3E%3Ctext x='150' y='160' font-family='Arial' font-size='16' fill='white' text-anchor='middle' dy='7'%3ESet%3C/text%3E%3C/svg%3E",
+                description: "Comfortable palazzo set for casual wear.",
+                discount: 30
+            },
+
+            // Additional Accessories
+            {
+                id: 29,
+                name: "Traditional Juttis",
+                price: 1299,
+                originalPrice: 1899,
+                category: "accessories",
+                image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 300 300'%3E%3Crect width='300' height='300' fill='%23f39c12'/%3E%3Ctext x='150' y='150' font-family='Arial' font-size='18' fill='white' text-anchor='middle' dy='7'%3EJuttis%3C/text%3E%3C/svg%3E",
+                description: "Handcrafted traditional juttis for ethnic wear.",
+                discount: 32
+            },
+            {
+                id: 30,
+                name: "Designer Clutch",
+                price: 1899,
+                originalPrice: 2699,
+                category: "accessories",
+                image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 300 300'%3E%3Crect width='300' height='300' fill='%23e84393'/%3E%3Ctext x='150' y='150' font-family='Arial' font-size='18' fill='white' text-anchor='middle' dy='7'%3EClutch%3C/text%3E%3C/svg%3E",
+                description: "Elegant designer clutch for parties.",
+                discount: 30
+            }
+        ];
+
+        let cart = [];
+        let wishlist = [];
+        let currentFilter = 'all';
+        let currentPage = 'home';
+
+        // Initialize the website
+        document.addEventListener('DOMContentLoaded', function() {
+            loadTheme();
+            renderProducts();
+            renderFeaturedProducts();
+            setupEventListeners();
+            updateCartCount();
+            updateWishlistCount();
+            createParticles();
+        });
+
+        // Create floating particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 15 + 's';
+                particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Theme functionality
+        function toggleTheme() {
+            const body = document.body;
+            const themeToggle = document.getElementById('themeToggle');
+            
+            body.classList.toggle('dark');
+            themeToggle.classList.toggle('dark');
+            
+            // Save theme preference
+            const isDark = body.classList.contains('dark');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        }
+
+        function loadTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            const body = document.body;
+            const themeToggle = document.getElementById('themeToggle');
+            
+            if (savedTheme === 'dark') {
+                body.classList.add('dark');
+                themeToggle.classList.add('dark');
+            }
+        }
+
+        // Page navigation
+        function showPage(pageName) {
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Show selected page
+            document.getElementById(pageName + 'Page').classList.add('active');
+            
+            // Update navigation
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            // Find and activate the corresponding nav link
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                if (link.textContent.toLowerCase() === pageName) {
+                    link.classList.add('active');
+                }
+            });
+            
+            currentPage = pageName;
+            
+            // Hide profile dropdown
+            document.getElementById('profileDropdown').classList.remove('show');
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Setup event listeners
+        function setupEventListeners() {
+            // Cart sidebar
+            document.getElementById('cartBtn').addEventListener('click', toggleCart);
+            document.getElementById('closeCart').addEventListener('click', toggleCart);
+            
+            // Wishlist modal
+            document.getElementById('wishlistBtn').addEventListener('click', toggleWishlist);
+            document.getElementById('closeWishlist').addEventListener('click', toggleWishlist);
+            
+            // Quick view modal
+            document.getElementById('closeQuickView').addEventListener('click', closeQuickView);
+            
+            // Search functionality
+            document.getElementById('searchInput').addEventListener('input', handleSearch);
+            document.getElementById('searchInput').addEventListener('focus', showSearchSuggestions);
+            document.getElementById('searchInput').addEventListener('blur', hideSearchSuggestions);
+            
+            // Contact form
+            document.getElementById('contactForm').addEventListener('submit', handleContactForm);
+            
+            // Login form
+            document.getElementById('loginForm').addEventListener('submit', handleLoginForm);
+            
+            // Register form
+            document.getElementById('registerForm').addEventListener('submit', handleRegisterForm);
+            
+            // Profile dropdown
+            document.getElementById('profileBtn').addEventListener('click', toggleProfileDropdown);
+            
+            // Close modals when clicking outside
+            document.addEventListener('click', function(e) {
+                if (e.target.classList.contains('modal-backdrop')) {
+                    closeAllModals();
+                }
+                
+                // Close profile dropdown when clicking outside
+                if (!e.target.closest('#profileBtn') && !e.target.closest('#profileDropdown')) {
+                    document.getElementById('profileDropdown').classList.remove('show');
+                }
+            });
+        }
+
+        // Profile dropdown toggle
+        function toggleProfileDropdown() {
+            const dropdown = document.getElementById('profileDropdown');
+            dropdown.classList.toggle('show');
+        }
+
+        // Form handlers
+        function handleContactForm(e) {
+            e.preventDefault();
+            showNotification('Message sent successfully! We\'ll get back to you soon.', 'success');
+            e.target.reset();
+        }
+
+        function handleLoginForm(e) {
+            e.preventDefault();
+            showNotification('Login successful! Welcome back!', 'success');
+            setTimeout(() => {
+                showPage('home');
+            }, 1500);
+        }
+
+        function handleRegisterForm(e) {
+            e.preventDefault();
+            const password = e.target.querySelector('input[type="password"]').value;
+            const confirmPassword = e.target.querySelectorAll('input[type="password"]')[1].value;
+            
+            if (password !== confirmPassword) {
+                showNotification('Passwords do not match!', 'error');
+                return;
+            }
+            
+            showNotification('Account created successfully! Welcome to Aklavya\'s Trends!', 'success');
+            setTimeout(() => {
+                showPage('home');
+            }, 1500);
+        }
+
+        // Render featured products for home page
+        function renderFeaturedProducts() {
+            const featuredGrid = document.getElementById('featuredProducts');
+            if (!featuredGrid) return;
+            
+            const featuredProducts = products.slice(0, 4); // Show first 4 products
+            featuredGrid.innerHTML = '';
+            
+            featuredProducts.forEach((product, index) => {
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden animate-fadeInUp transition-colors duration-300';
+                productCard.style.animationDelay = `${index * 0.1}s`;
+                
+                productCard.innerHTML = `
+                    <div class="relative">
+                        <img src="${product.image}" alt="${product.name}" class="w-full h-64 object-cover">
+                        ${product.discount ? `<div class="discount-badge absolute top-2 left-2 px-2 py-1 rounded-full text-white text-xs font-bold">${product.discount}% OFF</div>` : ''}
+                        <button onclick="toggleWishlistItem(${product.id})" class="absolute top-4 right-4 p-2 bg-white dark:bg-gray-700 rounded-full shadow-lg hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors duration-300 hover-scale">
+                            <i class="fas fa-heart ${isInWishlist(product.id) ? 'text-red-500' : 'text-gray-400'}"></i>
+                        </button>
+                        <button onclick="quickView(${product.id})" class="absolute top-4 left-4 p-2 bg-white dark:bg-gray-700 rounded-full shadow-lg hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors duration-300 hover-scale">
+                            <i class="fas fa-eye text-gray-600 dark:text-gray-300"></i>
+                        </button>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-semibold mb-2 text-gray-900 dark:text-white">${product.name}</h4>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4">${product.description}</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center space-x-2">
+                                <span class="text-2xl font-bold gradient-text">₹${product.price}</span>
+                                ${product.originalPrice ? `<span class="text-sm text-gray-500 line-through">₹${product.originalPrice}</span>` : ''}
+                            </div>
+                            <button onclick="addToCart(${product.id})" class="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-6 py-2 rounded-full hover:from-purple-700 hover:to-blue-700 transition-all duration-300 hover-scale">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                `;
+                
+                featuredGrid.appendChild(productCard);
+            });
+        }
+
+        // Render products
+        function renderProducts(productsToRender = products) {
+            const grid = document.getElementById('productsGrid');
+            if (!grid) return;
+            
+            grid.innerHTML = '';
+            
+            productsToRender.forEach((product, index) => {
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden animate-fadeInUp transition-colors duration-300';
+                productCard.style.animationDelay = `${index * 0.1}s`;
+                
+                productCard.innerHTML = `
+                    <div class="relative">
+                        <img src="${product.image}" alt="${product.name}" class="w-full h-64 object-cover">
+                        ${product.discount ? `<div class="discount-badge absolute top-2 left-2 px-2 py-1 rounded-full text-white text-xs font-bold">${product.discount}% OFF</div>` : ''}
+                        <button onclick="toggleWishlistItem(${product.id})" class="absolute top-4 right-4 p-2 bg-white dark:bg-gray-700 rounded-full shadow-lg hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors duration-300 hover-scale">
+                            <i class="fas fa-heart ${isInWishlist(product.id) ? 'text-red-500' : 'text-gray-400'}"></i>
+                        </button>
+                        <button onclick="quickView(${product.id})" class="absolute top-4 left-4 p-2 bg-white dark:bg-gray-700 rounded-full shadow-lg hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors duration-300 hover-scale">
+                            <i class="fas fa-eye text-gray-600 dark:text-gray-300"></i>
+                        </button>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-semibold mb-2 text-gray-900 dark:text-white">${product.name}</h4>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4">${product.description}</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center space-x-2">
+                                <span class="text-2xl font-bold gradient-text">₹${product.price}</span>
+                                ${product.originalPrice ? `<span class="text-sm text-gray-500 line-through">₹${product.originalPrice}</span>` : ''}
+                            </div>
+                            <button onclick="addToCart(${product.id})" class="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-6 py-2 rounded-full hover:from-purple-700 hover:to-blue-700 transition-all duration-300 hover-scale">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                `;
+                
+                grid.appendChild(productCard);
+            });
+        }
+
+        // Filter products
+        function filterProducts(category) {
+            currentFilter = category;
+            const filteredProducts = category === 'all' ? products : products.filter(p => p.category === category);
+            renderProducts(filteredProducts);
+            
+            // Update filter buttons
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('bg-purple-600', 'text-white');
+                btn.classList.add('text-purple-600');
+            });
+            
+            // Find the clicked button and update its style
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            filterButtons.forEach(btn => {
+                if (btn.textContent.toLowerCase() === category || (category === 'all' && btn.textContent === 'All')) {
+                    btn.classList.add('bg-purple-600', 'text-white');
+                    btn.classList.remove('text-purple-600');
+                }
+            });
+        }
+
+        // Search functionality
+        function handleSearch(e) {
+            const query = e.target.value.toLowerCase();
+            const filteredProducts = products.filter(product => 
+                product.name.toLowerCase().includes(query) || 
+                product.description.toLowerCase().includes(query) ||
+                product.category.toLowerCase().includes(query)
+            );
+            
+            if (currentPage === 'shop') {
+                renderProducts(filteredProducts);
+            } else if (currentPage === 'home') {
+                renderFeaturedProducts();
+            }
+            
+            updateSearchSuggestions(query);
+        }
+
+        function updateSearchSuggestions(query) {
+            const suggestions = document.getElementById('searchSuggestions');
+            if (query.length === 0) {
+                suggestions.classList.remove('show');
+                return;
+            }
+            
+            const matches = products.filter(product => 
+                product.name.toLowerCase().includes(query.toLowerCase())
+            ).slice(0, 5);
+            
+            suggestions.innerHTML = matches.map(product => `
+                <div class="p-3 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer border-b border-gray-100 dark:border-gray-600 last:border-b-0 transition-colors duration-300" onclick="selectProduct('${product.name}')">
+                    <div class="flex items-center space-x-3">
+                        <img src="${product.image}" alt="${product.name}" class="w-10 h-10 object-cover rounded">
+                        <div>
+                            <div class="font-medium text-gray-900 dark:text-white">${product.name}</div>
+                            <div class="text-sm text-gray-500 dark:text-gray-400">₹${product.price}</div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+            
+            suggestions.classList.add('show');
+        }
+
+        function showSearchSuggestions() {
+            const query = document.getElementById('searchInput').value;
+            if (query.length > 0) {
+                document.getElementById('searchSuggestions').classList.add('show');
+            }
+        }
+
+        function hideSearchSuggestions() {
+            setTimeout(() => {
+                document.getElementById('searchSuggestions').classList.remove('show');
+            }, 200);
+        }
+
+        function selectProduct(productName) {
+            document.getElementById('searchInput').value = productName;
+            handleSearch({ target: { value: productName } });
+            hideSearchSuggestions();
+        }
+
+        // Cart functionality
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            const existingItem = cart.find(item => item.id === productId);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ ...product, quantity: 1 });
+            }
+            
+            updateCartCount();
+            renderCartItems();
+            showNotification('Item added to cart!', 'success');
+        }
+
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            updateCartCount();
+            renderCartItems();
+            showNotification('Item removed from cart!', 'info');
+        }
+
+        function updateQuantity(productId, change) {
+            const item = cart.find(item => item.id === productId);
+            if (item) {
+                item.quantity += change;
+                if (item.quantity <= 0) {
+                    removeFromCart(productId);
+                } else {
+                    updateCartCount();
+                    renderCartItems();
+                }
+            }
+        }
+
+        function updateCartCount() {
+            const count = cart.reduce((total, item) => total + item.quantity, 0);
+            document.getElementById('cartCount').textContent = count;
+        }
+
+        function renderCartItems() {
+            const cartItems = document.getElementById('cartItems');
+            const cartTotal = document.getElementById('cartTotal');
+            
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<div class="text-center text-gray-500 dark:text-gray-400 py-8">Your cart is empty</div>';
+                cartTotal.textContent = '₹0.00';
+                return;
+            }
+            
+            cartItems.innerHTML = cart.map(item => `
+                <div class="flex items-center space-x-4 mb-6 p-4 bg-gray-50 dark:bg-gray-700 rounded-lg transition-colors duration-300">
+                    <img src="${item.image}" alt="${item.name}" class="w-16 h-16 object-cover rounded">
+                    <div class="flex-1">
+                        <h4 class="font-semibold text-gray-900 dark:text-white">${item.name}</h4>
+                        <p class="text-gray-600 dark:text-gray-400">₹${item.price}</p>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <button onclick="updateQuantity(${item.id}, -1)" class="w-8 h-8 bg-gray-200 dark:bg-gray-600 rounded-full flex items-center justify-center hover:bg-gray-300 dark:hover:bg-gray-500 transition-colors">
+                            <i class="fas fa-minus text-xs text-gray-600 dark:text-gray-300"></i>
+                        </button>
+                        <span class="w-8 text-center text-gray-900 dark:text-white">${item.quantity}</span>
+                        <button onclick="updateQuantity(${item.id}, 1)" class="w-8 h-8 bg-gray-200 dark:bg-gray-600 rounded-full flex items-center justify-center hover:bg-gray-300 dark:hover:bg-gray-500 transition-colors">
+                            <i class="fas fa-plus text-xs text-gray-600 dark:text-gray-300"></i>
+                        </button>
+                    </div>
+                    <button onclick="removeFromCart(${item.id})" class="text-red-500 hover:text-red-700 transition-colors">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+            `).join('');
+            
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            cartTotal.textContent = `₹${total.toFixed(2)}`;
+        }
+
+        function toggleCart() {
+            const sidebar = document.getElementById('cartSidebar');
+            sidebar.classList.toggle('translate-x-full');
+            renderCartItems();
+        }
+
+        // Wishlist functionality
+        function toggleWishlistItem(productId) {
+            const index = wishlist.findIndex(item => item.id === productId);
+            
+            if (index > -1) {
+                wishlist.splice(index, 1);
+                showNotification('Removed from wishlist!', 'info');
+            } else {
+                const product = products.find(p => p.id === productId);
+                wishlist.push(product);
+                showNotification('Added to wishlist!', 'success');
+            }
+            
+            updateWishlistCount();
+            renderProducts(currentFilter === 'all' ? products : products.filter(p => p.category === currentFilter));
+            renderFeaturedProducts();
+            renderWishlistItems();
+        }
+
+        function isInWishlist(productId) {
+            return wishlist.some(item => item.id === productId);
+        }
+
+        function updateWishlistCount() {
+            document.getElementById('wishlistCount').textContent = wishlist.length;
+        }
+
+        function renderWishlistItems() {
+            const wishlistItems = document.getElementById('wishlistItems');
+            
+            if (wishlist.length === 0) {
+                wishlistItems.innerHTML = '<div class="col-span-full text-center text-gray-500 dark:text-gray-400 py-8">Your wishlist is empty</div>';
+                return;
+            }
+            
+            wishlistItems.innerHTML = wishlist.map(item => `
+                <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 transition-colors duration-300">
+                    <img src="${item.image}" alt="${item.name}" class="w-full h-32 object-cover rounded mb-3">
+                    <h4 class="font-semibold mb-2 text-gray-900 dark:text-white">${item.name}</h4>
+                    <div class="flex items-center space-x-2 mb-3">
+                        <span class="text-lg font-bold text-purple-600">₹${item.price}</span>
+                        ${item.originalPrice ? `<span class="text-sm text-gray-500 line-through">₹${item.originalPrice}</span>` : ''}
+                    </div>
+                    <div class="flex space-x-2">
+                        <button onclick="addToCart(${item.id})" class="flex-1 bg-purple-600 text-white py-2 px-3 rounded text-sm hover:bg-purple-700 transition-colors">
+                            Add to Cart
+                        </button>
+                        <button onclick="toggleWishlistItem(${item.id})" class="p-2 text-red-500 hover:text-red-700 transition-colors">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function toggleWishlist() {
+            const modal = document.getElementById('wishlistModal');
+            modal.classList.toggle('hidden');
+            modal.classList.toggle('flex');
+            renderWishlistItems();
+        }
+
+        // Quick view functionality
+        function quickView(productId) {
+            const product = products.find(p => p.id === productId);
+            const modal = document.getElementById('quickViewModal');
+            const content = document.getElementById('quickViewContent');
+            
+            content.innerHTML = `
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="relative">
+                        <img src="${product.image}" alt="${product.name}" class="w-full h-96 object-cover rounded-lg">
+                        ${product.discount ? `<div class="discount-badge absolute top-4 left-4 px-3 py-1 rounded-full text-white font-bold">${product.discount}% OFF</div>` : ''}
+                    </div>
+                    <div>
+                        <h3 class="text-3xl font-bold mb-4 text-gray-900 dark:text-white">${product.name}</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-6">${product.description}</p>
+                        <div class="flex items-center space-x-3 mb-6">
+                            <span class="text-4xl font-bold gradient-text">₹${product.price}</span>
+                            ${product.originalPrice ? `<span class="text-xl text-gray-500 line-through">₹${product.originalPrice}</span>` : ''}
+                            ${product.discount ? `<span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-sm font-semibold">Save ₹${product.originalPrice - product.price}</span>` : ''}
+                        </div>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium mb-2 text-gray-700 dark:text-gray-300">Size</label>
+                                <select class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white">
+                                    <option>Small</option>
+                                    <option>Medium</option>
+                                    <option>Large</option>
+                                    <option>X-Large</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2 text-gray-700 dark:text-gray-300">Color</label>
+                                <div class="flex space-x-2">
+                                    <div class="w-8 h-8 bg-black rounded-full cursor-pointer border-2 border-gray-300 dark:border-gray-600 hover:border-purple-500"></div>
+                                    <div class="w-8 h-8 bg-white rounded-full cursor-pointer border-2 border-gray-300 dark:border-gray-600 hover:border-purple-500"></div>
+                                    <div class="w-8 h-8 bg-blue-500 rounded-full cursor-pointer border-2 border-gray-300 dark:border-gray-600 hover:border-purple-500"></div>
+                                    <div class="w-8 h-8 bg-red-500 rounded-full cursor-pointer border-2 border-gray-300 dark:border-gray-600 hover:border-purple-500"></div>
+                                </div>
+                            </div>
+                            <div class="flex space-x-4">
+                                <button onclick="addToCart(${product.id}); closeQuickView();" class="flex-1 bg-gradient-to-r from-purple-600 to-blue-600 text-white py-3 rounded-lg font-semibold hover:from-purple-700 hover:to-blue-700 transition-all duration-300">
+                                    Add to Cart
+                                </button>
+                                <button onclick="toggleWishlistItem(${product.id})" class="p-3 border-2 border-purple-600 text-purple-600 rounded-lg hover:bg-purple-600 hover:text-white transition-all duration-300">
+                                    <i class="fas fa-heart ${isInWishlist(product.id) ? 'text-red-500' : ''}"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeQuickView() {
+            const modal = document.getElementById('quickViewModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        // Notification system
+        function showNotification(message, type = 'success') {
+            const notification = document.getElementById('notification');
+            const text = document.getElementById('notificationText');
+            
+            text.textContent = message;
+            notification.className = `notification fixed top-20 right-4 px-6 py-3 rounded-lg shadow-lg z-50 ${
+                type === 'success' ? 'bg-green-500' : 
+                type === 'error' ? 'bg-red-500' : 'bg-blue-500'
+            } text-white`;
+            
+            notification.classList.add('show');
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+
+        // Checkout functionality
+        function proceedToCheckout() {
+            if (cart.length === 0) {
+                showNotification('Your cart is empty!', 'error');
+                return;
+            }
+            
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            showNotification(`Order placed successfully! Total: ₹${total.toFixed(2)}`, 'success');
+            
+            // Clear cart
+            cart = [];
+            updateCartCount();
+            renderCartItems();
+            toggleCart();
+        }
+
+        // Close all modals
+        function closeAllModals() {
+            document.getElementById('wishlistModal').classList.add('hidden');
+            document.getElementById('wishlistModal').classList.remove('flex');
+            document.getElementById('quickViewModal').classList.add('hidden');
+            document.getElementById('quickViewModal').classList.remove('flex');
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fadeInUp');
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.product-card, .category-card, .about-section, .contact-form').forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96c0e27ae51854b6',t:'MTc1NDY3NTcyNy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+
